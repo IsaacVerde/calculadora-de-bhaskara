@@ -1,0 +1,24 @@
+body{
+    font-family: sans-serif;
+    margin: 40px;
+    text-align: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 300px;
+    margin:auto;
+}
+input{
+    padding: 8px;
+}
+button{
+    padding:10px;
+    background:silver;
+    color: black;
+    border: none;
+    cursor: pointer;
+
+}
