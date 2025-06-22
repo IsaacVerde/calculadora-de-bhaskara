@@ -1,24 +1,249 @@
-body{
-    font-family: sans-serif;
-    margin: 40px;
-    text-align: center;
-}
+/* Importação das fontes do Google Fonts */
+/* 'Roboto Mono' para um toque de código/matemática e 'Roboto' para o texto geral. */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap');
 
-form{
+/* Estilos para o corpo da página (body) */
+body {
+    /* Define a fonte padrão para todo o texto na página. 'Roboto' é limpa e moderna. */
+    font-family: 'Roboto', sans-serif;
+    /* Cor de fundo suave para a página. Lembra um quadro branco ou papel claro. */
+    background-color: #f8f8f8;
+    /* Usa Flexbox para centralizar o conteúdo do body (sua calculadora) na tela. */
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 300px;
-    margin:auto;
+    /* Alinha o conteúdo horizontalmente ao centro. */
+    justify-content: center;
+    /* Alinha o conteúdo verticalmente ao centro, garantindo que a calculadora fique no meio da tela. */
+    align-items: center;
+    /* Garante que o body ocupe no mínimo 100% da altura da janela do navegador. */
+    min-height: 100vh;
+    /* Remove as margens padrão que os navegadores aplicam ao body. */
+    margin: 0;
+    /* Define a cor padrão do texto para um cinza escuro suave, fácil de ler. */
+    color: #333;
+    /* Define o espaçamento entre linhas para melhor legibilidade. */
+    line-height: 1.6;
 }
-input{
-    padding: 8px;
-}
-button{
-    padding:10px;
-    background:silver;
-    color: black;
-    border: none;
-    cursor: pointer;
 
+/* Estilos para o container principal da calculadora */
+.calculator-container {
+    /* Fundo branco puro para o container, como um papel ou um quadro. */
+    background-color: #ffffff;
+    /* Espaçamento interno dentro do container, dando "ar" aos elementos. */
+    padding: 30px;
+    /* Cantos levemente arredondados para um visual mais suave e moderno. */
+    border-radius: 8px;
+    /* Sombra sutil para dar um efeito de profundidade, como se estivesse levemente levantado. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    /* Centraliza o texto e os elementos (como o título e o formulário) dentro do container. */
+    text-align: center;
+    /* Define uma largura máxima para o container, evitando que ele se estique demais em telas grandes. */
+    max-width: 420px;
+    /* Em telas menores, o container ocupará 90% da largura, garantindo responsividade. */
+    width: 90%;
+    /* Garante que padding e border sejam incluídos na largura e altura total do elemento. */
+    box-sizing: border-box;
+    /* Adiciona uma borda fina e cinza claro, como a borda de um quadro. */
+    border: 1px solid #e0e0e0;
+}
+
+/* Estilos para o título principal (h1) */
+h1 {
+    /* Usa a fonte 'Roboto Mono' para um toque de "código" ou "matemática". */
+    font-family: 'Roboto Mono', monospace;
+    /* Torna o título mais pesado (negrito) para destaque. */
+    font-weight: 700;
+    /* Cor do título, um azul escuro que remete a seriedade e lógica. */
+    color: #2c3e50;
+    /* Espaçamento abaixo do título, separando-o do formulário. */
+    margin-bottom: 30px;
+    /* Tamanho da fonte do título. */
+    font-size: 2.2em;
+}
+
+/* Estilos para o formulário */
+form#form-bhaskara {
+    /* Organiza os elementos do formulário (labels, inputs, botão) em uma coluna. */
+    display: flex;
+    /* Define a direção principal dos itens como coluna (um abaixo do outro). */
+    flex-direction: column;
+    /* Espaçamento entre os elementos (label + input) do formulário. */
+    gap: 15px; /* Espaçamento entre grupos de label/input */
+}
+
+/* Estilos para as etiquetas (labels) dos campos de entrada */
+form#form-bhaskara label {
+    /* Garante que cada label ocupe sua própria linha, ficando acima do input. */
+    display: block;
+    /* Alinha o texto da label à esquerda. */
+    text-align: left;
+    /* Espaçamento entre a label e o input que ela descreve. */
+    margin-bottom: 5px;
+    /* Peso da fonte para as labels. */
+    font-weight: 500;
+    /* Cor das labels, um cinza um pouco mais escuro para destaque. */
+    color: #555;
+    /* Tamanho da fonte das labels. */
+    font-size: 1.05em;
+}
+
+/* Estilos para os campos de entrada (inputs do tipo number) */
+form#form-bhaskara input[type="number"] {
+    /* Faz o input ocupar a largura total do seu container pai. */
+    width: 100%;
+    /* Espaçamento interno do input para o texto não ficar colado nas bordas. */
+    padding: 12px;
+    /* Borda fina e discreta. */
+    border: 1px solid #ccc;
+    /* Cantos levemente arredondados. */
+    border-radius: 5px;
+    /* Tamanho da fonte dentro do input. */
+    font-size: 1.1em;
+    /* Garante que padding e border sejam incluídos na largura total, evitando que o input transborde. */
+    box-sizing: border-box;
+    /* Transição suave para as mudanças de cor de borda e sombra ao focar. */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Fonte monospace para o valor digitado, reforçando o "ar de matemática". */
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Estilos para o input quando está em foco (clicado/digitando) */
+form#form-bhaskara input[type="number"]:focus {
+    /* Muda a cor da borda para um azul vibrante. */
+    border-color: #3498db;
+    /* Adiciona uma sombra suave e azulada ao focar, dando feedback visual. */
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    /* Remove a borda de contorno padrão que alguns navegadores aplicam ao focar. */
+    outline: none;
+}
+
+/* Estilos para o botão de calcular */
+form#form-bhaskara button[type="submit"] {
+    /* Cor de fundo do botão, um verde esmeralda para indicar ação e "sucesso". */
+    background-color: #2ecc71;
+    /* Cor do texto do botão. */
+    color: white;
+    /* Espaçamento interno do botão, tornando-o mais fácil de clicar. */
+    padding: 15px 30px;
+    /* Remove a borda padrão do botão. */
+    border: none;
+    /* Cantos arredondados. */
+    border-radius: 5px;
+    /* Tamanho da fonte do botão. */
+    font-size: 1.2em;
+    /* Peso da fonte do botão (negrito). */
+    font-weight: 600;
+    /* Muda o cursor para uma "mãozinha" ao passar por cima, indicando que é clicável. */
+    cursor: pointer;
+    /* Transições suaves para a cor de fundo e para um pequeno efeito de "levantar" no hover. */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    /* Faz o botão ocupar a largura total do seu container. */
+    width: 100%;
+    /* Espaçamento acima do botão, separando-o dos inputs. */
+    margin-top: 25px;
+    /* Garante que padding e border sejam incluídos na largura total. */
+    box-sizing: border-box;
+}
+
+/* Estilos para o botão ao passar o mouse (hover) */
+form#form-bhaskara button[type="submit"]:hover {
+    /* Escurece o verde do botão ao passar o mouse. */
+    background-color: #27ae60;
+    /* Pequeno efeito de mover para cima, dando uma sensação de interatividade. */
+    transform: translateY(-2px);
+}
+
+/* Estilos para a div onde o resultado será exibido */
+div#resultado {
+    /* Espaçamento acima da div de resultado. */
+    margin-top: 35px;
+    /* Espaçamento interno do bloco de resultado. */
+    padding: 20px;
+    /* Cor de fundo para o bloco de resultado, um cinza muito claro. */
+    background-color: #f5f5f5;
+    /* Cantos arredondados. */
+    border-radius: 5px;
+    /* Borda discreta, como um quadro onde o resultado é escrito. */
+    border: 1px solid #e0e0e0;
+    /* Tamanho da fonte para o resultado. */
+    font-size: 1.4em;
+    /* Peso da fonte para o resultado. */
+    font-weight: 700;
+    /* Cor do texto do resultado, um cinza escuro. */
+    color: #444;
+    /* Centraliza o texto dentro da div. */
+    text-align: center;
+    /* Altura mínima para o bloco de resultado, mesmo quando vazio. */
+    min-height: 50px;
+    /* Usa Flexbox para ajudar a centralizar o texto verticalmente dentro da div. */
+    display: flex;
+    /* Centraliza o conteúdo horizontalmente. */
+    justify-content: center;
+    /* Centraliza o conteúdo verticalmente. */
+    align-items: center;
+    /* Define a família de fontes para o resultado para um toque de "código". */
+    font-family: 'Roboto Mono', monospace;
+    /* Para quando o resultado tiver múltiplos parágrafos, dá um espaçamento entre eles. */
+    flex-direction: column; 
+    gap: 10px; /* Espaçamento entre os elementos filhos (se for o caso de múltiplos <p>) */
+}
+
+/* Estilos para parágrafos dentro da div de resultado (se você usar múltiplos <p> no JS) */
+div#resultado p {
+    /* Remove margens padrão de parágrafos para que o espaçamento seja controlado pelo 'gap' da div pai */
+    margin: 0; 
+    /* Garante que a fonte seja a mesma para os parágrafos */
+    font-family: 'Roboto Mono', monospace;
+    /* Ajusta o tamanho da fonte para os parágrafos, se o container tiver um font-size maior */
+    font-size: 0.9em; 
+    /* Cor mais específica para os textos dos parágrafos de resultado */
+    color: #2c3e50;
+}
+
+/* Estilos para destacar partes específicas do resultado (ex: os valores de x1 e x2) */
+/* Você precisará adicionar classes no seu JavaScript para usar isso.
+   Ex: <p>X1: <span class="result-value">2.00</span></p> */
+.result-value {
+    color: #3498db; /* Um azul para os valores, como um resultado importante. */
+    font-weight: 700; /* Negrito para os valores. */
+}
+
+
+/* Estilos para a responsividade básica (se adapta a telas menores) */
+@media (max-width: 600px) {
+    /* Ajustes para o container em telas com largura de até 600px. */
+    .calculator-container {
+        /* Reduz o espaçamento interno. */
+        padding: 20px;
+        /* Remove o arredondamento dos cantos em telas muito pequenas para um visual "full-width". */
+        border-radius: 0;
+        /* Remove a sombra para um visual mais limpo em telas pequenas. */
+        box-shadow: none;
+        /* Ocupa 100% da largura. */
+        width: 100%;
+        /* Remove a largura máxima. */
+        max-width: none;
+        /* Remove a borda em telas pequenas para uma experiência mais fluida. */
+        border: none;
+    }
+
+    /* Ajusta o tamanho do título em telas menores. */
+    h1 {
+        font-size: 1.6em;
+    }
+
+    /* Ajusta o padding e o tamanho da fonte do botão. */
+    form#form-bhaskara button[type="submit"] {
+        padding: 12px 20px;
+        font-size: 1.1em;
+    }
+
+    /* Ajusta o tamanho da fonte do resultado. */
+    div#resultado {
+        font-size: 1.1em;
+        padding: 15px;
+    }
+
+    div#resultado p {
+        font-size: 0.85em; /* Ajusta o tamanho dos parágrafos de resultado */
+    }
 }
